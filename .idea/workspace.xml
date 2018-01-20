@@ -17,8 +17,18 @@
       <file leaf-file-name="solution.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/solution.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="31" column="4" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+            <state relative-caret-position="342">
+              <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-272">
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -27,8 +37,8 @@
       <file leaf-file-name="test_solution.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_solution.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="12" column="119" lean-forward="true" selection-start-line="12" selection-start-column="119" selection-end-line="12" selection-end-column="119" />
+            <state relative-caret-position="1258">
+              <caret line="75" column="38" lean-forward="true" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -42,6 +52,7 @@
       <find>unitlist</find>
       <find>row_units</find>
       <find>count</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace>units</replace>
@@ -57,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -159,7 +170,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24304539" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -171,7 +182,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39905363" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -281,26 +292,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/utils.py">
+    <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/697486679/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1817">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="138">
+          <caret line="3735" column="6" lean-forward="false" selection-start-line="3735" selection-start-column="6" selection-end-line="3735" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_solution.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" column="119" lean-forward="true" selection-start-line="12" selection-start-column="119" selection-end-line="12" selection-end-column="119" />
+        <state relative-caret-position="1258">
+          <caret line="75" column="38" lean-forward="true" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-272">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/solution.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="31" column="4" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        <state relative-caret-position="342">
+          <caret line="52" column="4" lean-forward="false" selection-start-line="52" selection-start-column="4" selection-end-line="52" selection-end-column="4" />
           <folding />
         </state>
       </provider>

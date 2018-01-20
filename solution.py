@@ -25,12 +25,32 @@ def naked_twins(values):
         The values dictionary with the naked twins eliminated from peers
 
     """
-    #Solve 1st stage of one choice and elimination
-    values = reduce_puzzle(values)
 
-    # Find pairs
-    unitlist = row_units + square_units + column_units + findDiag()
-    values = row_col_square_naked_twin(values,unitlist)
+    dig_left = findDiag()
+    dig_right = findDiag(False)
+    unitlists = row_units + square_units + column_units + [dig_right] + [dig_left]
+
+    for unit in unitlists:
+        # Find pairs
+        s = [values[s] for s in unit if (len(values[s])==2)]
+        pair = []
+        if len(s)>1:
+            pair = s
+
+        # find naked twins
+        nktwin = []
+        for i in pair :
+            nktwin.append(list(str(i))[0])
+            nktwin.append(list(str(i))[1])
+        nb_replace = []
+        for nk in nktwin:
+            if nktwin.count(nk)>1:
+                nb_replace.append(nk)
+        #Replace naked twin
+        for u in unit:
+            for nb in nb_replace:
+                values[u] = values[u].replace(nb,'')
+    
     return values
 
 
@@ -52,7 +72,7 @@ def invConvertGridColRowToNumber(row,col):
             if (val==row) & (vals==col) & (key==keys):
                 return key
 
-def findDiag():
+def findDiag(left = True):
     row_total = convertGridColRowToNumber(row_units)
     column_total= convertGridColRowToNumber(column_units)
     diag_left = []
@@ -64,63 +84,11 @@ def findDiag():
             if (row_total[intes[0]]== column_total[intes[0]]) :
                 diag_left.append(intes[0])
                 row_op = len(column)- row_total[intes[0]] + 1
-                diag_right.append(invConvertGridColRowToNumber(row_op,column_total[intes[0]]))
+                diag_right.append(str(invConvertGridColRowToNumber(row_op,column_total[intes[0]])))
+        if left:
+            return diag_left
 
-    return diag_right + diag_left
-
-# Find naked twin pairs
-def row_col_square_naked_twin(values ,units):
-    s = [(s, values[s]) for s in boxes if (len(values[s]) > 1) and (len(values[s]) < 3)]
-    s = dict(s)
-    # Find pairs in same column/row
-    key = s.keys()
-    key = list(key)
-    count = 0
-    map = dict()
-    #Find pairs
-    for row in range(len(units)):
-        element = []
-        for i in units[row]:
-            count += key.count(i)
-            element.append(i)
-        if count > 1 and count < 3:
-            map[row] = element
-        count = 0
-
-    for ke, va in map.items():
-        store = []
-        for i in key:
-            if i in va:
-                store.append(i)
-        map[ke] = store
-
-    # find naked twins
-    for key, value in map.items():
-        #Get values of sudoku elements
-        elements = [values [ele] for ele in value]
-        #get individual elements
-        split = [ ]
-        for elets in elements:
-            val = str(elets)
-            if len(list(val))>1:
-                split.append(list(val)[1])
-                split.append(list(val)[0])
-            else:
-                split.append(val)
-        #find repetetive elements
-        repetitive = []
-        for nb in split:
-            if split.count(nb)>1:
-                repetitive.append(nb)
-
-
-        for unit in unitlist:
-            if set(value).issubset(unit):
-                for rep in set(repetitive):
-                    for u in unit:
-                        values[u] = values[u].replace(str(rep),'')
-
-    return values
+    return diag_right
 
 
 def eliminate(values):
@@ -255,16 +223,27 @@ def solve(grid):
 
 
 if __name__ == "__main__":
-    diag_sudoku_grid = '2.............62....1....7...6..8...3...9...7...6..4...4....8....52.............3'
-    display(grid2values(diag_sudoku_grid))
-    result = solve(diag_sudoku_grid)
-    display(result)
+    before_naked_twins_1 = {'I6': '4', 'H9': '3', 'I2': '6', 'E8': '1', 'H3': '5', 'H7': '8', 'I7': '1', 'I4': '8',
+                            'H5': '6', 'F9': '7', 'G7': '6', 'G6': '3', 'G5': '2', 'E1': '8', 'G3': '1', 'G2': '8',
+                            'G1': '7', 'I1': '23', 'C8': '5', 'I3': '23', 'E5': '347', 'I5': '5', 'C9': '1', 'G9': '5',
+                            'G8': '4', 'A1': '1', 'A3': '4', 'A2': '237', 'A5': '9', 'A4': '2357', 'A7': '27',
+                            'A6': '257', 'C3': '8', 'C2': '237', 'C1': '23', 'E6': '579', 'C7': '9', 'C6': '6',
+                            'C5': '37', 'C4': '4', 'I9': '9', 'D8': '8', 'I8': '7', 'E4': '6', 'D9': '6', 'H8': '2',
+                            'F6': '125', 'A9': '8', 'G4': '9', 'A8': '6', 'E7': '345', 'E3': '379', 'F1': '6',
+                            'F2': '4', 'F3': '23', 'F4': '1235', 'F5': '8', 'E2': '37', 'F7': '35', 'F8': '9',
+                            'D2': '1', 'H1': '4', 'H6': '17', 'H2': '9', 'H4': '17', 'D3': '2379', 'B4': '27',
+                            'B5': '1', 'B6': '8', 'B7': '27', 'E9': '2', 'B1': '9', 'B2': '5', 'B3': '6', 'D6': '279',
+                            'D7': '34', 'D4': '237', 'D5': '347', 'B8': '3', 'B9': '4', 'D1': '5'}
+    #diag_sudoku_grid = '2.............62....1....7...6..8...3...9...7...6..4...4....8....52.............3'
+    #display(grid2values(diag_sudoku_grid))
+    result = naked_twins(before_naked_twins_1)
+    #display(result)
 
-    try:
-        import PySudoku
-        PySudoku.play(grid2values(diag_sudoku_grid), result, history)
+    #try:
+     #   import PySudoku
+      #  PySudoku.play(grid2values(diag_sudoku_grid), result, history)
 
-    except SystemExit:
-        pass
-    except:
-        print('We could not visualize your board due to a pygame issue. Not a problem! It is not a requirement.')
+#    except SystemExit:
+ #       pass
+  #  except:
+   #     print('We could not visualize your board due to a pygame issue. Not a problem! It is not a requirement.')
