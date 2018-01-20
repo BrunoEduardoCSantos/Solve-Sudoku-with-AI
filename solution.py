@@ -34,25 +34,19 @@ def naked_twins(values):
         # Find pairs
         s = [values[s] for s in unit if (len(values[s])==2)]
         key = [s for s in unit if (len(values[s]) == 2)]
-        pair = []
+        candidate = []
         if len(s)>1:
-            pair = s
+            candidate = s
 
-        # find naked twins
-        nktwin = []
-        for i in pair :
-            nktwin.append(list(str(i))[0])
-            nktwin.append(list(str(i))[1])
-        nb_replace = []
-        for nk in nktwin:
-            if nktwin.count(nk)>1:
-                nb_replace.append(nk)
-        
+        # find naked twin pairs
+        pair = [k for cand in candidate for k in key if cand == values[k]]
+
         #Replace naked twin
-        for u in unit:
-            for nb in nb_replace :
-                if (u not in key) and (len(values[u])>1):
-                    values[u] = values[u].replace(nb,'')
+        for p in pair:
+            for peer in peers[p]:
+                if (len(values[peer])>1) and (peer not in key):
+                    for pr in list(str(values[peer])):
+                        values[peer] = values[peer].replace(pr,'')
 
     return values
 
