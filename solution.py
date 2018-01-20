@@ -33,6 +33,7 @@ def naked_twins(values):
     for unit in unitlists:
         # Find pairs
         s = [values[s] for s in unit if (len(values[s])==2)]
+        key = [s for s in unit if (len(values[s]) == 2)]
         pair = []
         if len(s)>1:
             pair = s
@@ -46,11 +47,13 @@ def naked_twins(values):
         for nk in nktwin:
             if nktwin.count(nk)>1:
                 nb_replace.append(nk)
+        
         #Replace naked twin
         for u in unit:
-            for nb in nb_replace:
-                values[u] = values[u].replace(nb,'')
-    
+            for nb in nb_replace :
+                if (u not in key) and (len(values[u])>1):
+                    values[u] = values[u].replace(nb,'')
+
     return values
 
 
