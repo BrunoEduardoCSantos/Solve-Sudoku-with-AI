@@ -121,6 +121,7 @@ def only_choice(values):
 
 
     """
+    unitlist = row_units + square_units + column_units + findDiag()
     for i in unitlist:
         for digit in '123456789':
             space = [box for box in i if digit in values[box]]
