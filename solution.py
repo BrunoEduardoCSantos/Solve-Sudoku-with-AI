@@ -26,12 +26,8 @@ def naked_twins(values):
 
     """
 
-    dig_left = findDiag()
-    dig_right = findDiag(False)
-    unitlists = row_units + square_units + column_units + [dig_right] + [dig_left]
-    unitss = dict((s, [u for u in unitlists if s in u]) for s in boxes)
-    peerss = dict((s, set(sum(unitss[s], [])) - set([s])) for s in boxes)
 
+    unitlists = row_units + square_units + column_units + findDiag()
     for unit in unitlists:
         # Find pairs
         s = [values[s] for s in unit if (len(values[s])==2)]
@@ -42,9 +38,8 @@ def naked_twins(values):
 
         #Replace naked twin
         for pairs in paired_candidates:
-            for peer in peerss[pairs[0]]:
-                if (peer not in pairs):
-                    print("Peer",peer)
+            for peer in unit:
+                if (peer not in pairs) and (len(values[peer])>1):
                     for digit in values[pairs[0]]:
                             values[peer] = values[peer].replace(digit,'')
 
@@ -69,7 +64,7 @@ def invConvertGridColRowToNumber(row,col):
             if (val==row) & (vals==col) & (key==keys):
                 return key
 
-def findDiag(left = True):
+def findDiag():
     row_total = convertGridColRowToNumber(row_units)
     column_total= convertGridColRowToNumber(column_units)
     diag_left = []
@@ -82,10 +77,7 @@ def findDiag(left = True):
                 diag_left.append(intes[0])
                 row_op = len(column)- row_total[intes[0]] + 1
                 diag_right.append(str(invConvertGridColRowToNumber(row_op,column_total[intes[0]])))
-        if left:
-            return diag_left
-
-    return diag_right
+    return [diag_right[::-1]]+[diag_left]
 
 
 def eliminate(values):
