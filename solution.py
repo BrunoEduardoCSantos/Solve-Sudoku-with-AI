@@ -29,8 +29,8 @@ def naked_twins(values):
     dig_left = findDiag()
     dig_right = findDiag(False)
     unitlists = row_units + square_units + column_units + [dig_right] + [dig_left]
-    units = dict((s, [u for u in unitlists if s in u]) for s in boxes)
-    peers = dict((s, set(sum(units[s], [])) - set([s])) for s in boxes)
+    unitss = dict((s, [u for u in unitlists if s in u]) for s in boxes)
+    peerss = dict((s, set(sum(unitss[s], [])) - set([s])) for s in boxes)
 
     for unit in unitlists:
         # Find pairs
@@ -42,11 +42,11 @@ def naked_twins(values):
 
         #Replace naked twin
         for pairs in paired_candidates:
-            for p in pairs:
-                for peer in peers[p]:
-                        if (len(values[peer])>1) and (peer not in pairs):
-                            for pr in list(str(values[peer])):
-                                 values[peer] = values[peer].replace(pr,'')
+            for peer in peerss[pairs[0]]:
+                if (peer not in pairs):
+                    print("Peer",peer)
+                    for digit in values[pairs[0]]:
+                            values[peer] = values[peer].replace(digit,'')
 
     return values
 
